@@ -1,0 +1,179 @@
+{
+  "config": {
+    "n_customers": 600,
+    "days": 90,
+    "seed": 7,
+    "review_cost": 150.0
+  },
+  "rows": {
+    "train": 63438,
+    "val": 9063,
+    "test": 18126
+  },
+  "threshold_from_validation": {
+    "threshold": 0.6687214113179222,
+    "alerts": 71,
+    "cost": 10678.359999999928,
+    "baseline_cost": 423720.27999999997,
+    "saved": 413041.92000000004
+  },
+  "test_at_threshold": {
+    "alerts": 112,
+    "fraud_caught": 111,
+    "fraud_total": 114,
+    "amount_caught": 1231501.68,
+    "amount_missed": 42945.770000000004,
+    "cost": 59745.770000000004,
+    "baseline_cost": 1274447.45,
+    "saved": 1214701.68,
+    "precision": 0.9910714285714286,
+    "recall": 0.9736842105263158
+  },
+  "test_metrics": {
+    "rules only": {
+      "pr_auc": 0.5903493959200813,
+      "roc_auc": 0.8494629311453183,
+      "base_rate": 0.006289308176100629,
+      "precision@0.5%": 0.7692307692307693,
+      "recall@0.5%": 0.6140350877192983,
+      "precision@1.0%": 0.4419889502762431,
+      "recall@1.0%": 0.7017543859649122,
+      "precision@2.0%": 0.22038567493112948,
+      "recall@2.0%": 0.7017543859649122
+    },
+    "isolation forest only": {
+      "pr_auc": 0.7587796563695196,
+      "roc_auc": 0.9937850886933078,
+      "base_rate": 0.006289308176100629,
+      "precision@0.5%": 0.7692307692307693,
+      "recall@0.5%": 0.6140350877192983,
+      "precision@1.0%": 0.49171270718232046,
+      "recall@1.0%": 0.7807017543859649,
+      "precision@2.0%": 0.2892561983471074,
+      "recall@2.0%": 0.9210526315789473
+    },
+    "gradient boosting only": {
+      "pr_auc": 0.9988254337095253,
+      "roc_auc": 0.9999917209189975,
+      "base_rate": 0.006289308176100629,
+      "precision@0.5%": 1.0,
+      "recall@0.5%": 0.7982456140350878,
+      "precision@1.0%": 0.6298342541436464,
+      "recall@1.0%": 1.0,
+      "precision@2.0%": 0.3140495867768595,
+      "recall@2.0%": 1.0
+    },
+    "blend (final)": {
+      "pr_auc": 0.9983198725366234,
+      "roc_auc": 0.9999873378761138,
+      "base_rate": 0.006289308176100629,
+      "precision@0.5%": 1.0,
+      "recall@0.5%": 0.7982456140350878,
+      "precision@1.0%": 0.6298342541436464,
+      "recall@1.0%": 1.0,
+      "precision@2.0%": 0.3140495867768595,
+      "recall@2.0%": 1.0
+    },
+    "max-fusion (alternative)": {
+      "pr_auc": 0.9833321353473675,
+      "roc_auc": 0.9998027630702339,
+      "base_rate": 0.006289308176100629,
+      "precision@0.5%": 1.0,
+      "recall@0.5%": 0.7982456140350878,
+      "precision@1.0%": 0.6187845303867403,
+      "recall@1.0%": 0.9824561403508771,
+      "precision@2.0%": 0.3140495867768595,
+      "recall@2.0%": 1.0
+    }
+  },
+  "recall_by_fraud_type": {
+    "account_takeover": {
+      "count": 36,
+      "caught": 33,
+      "recall": 0.9166666666666666
+    },
+    "atm_spree": {
+      "count": 31,
+      "caught": 31,
+      "recall": 1.0
+    },
+    "card_testing": {
+      "count": 35,
+      "caught": 35,
+      "recall": 1.0
+    },
+    "impossible_travel": {
+      "count": 12,
+      "caught": 12,
+      "recall": 1.0
+    }
+  },
+  "novel_pattern_recall_at_1pct": {
+    "account_takeover": {
+      "rules": 0.8611111111111112,
+      "isolation forest": 0.9722222222222222,
+      "gradient boosting": 0.5555555555555556,
+      "blend": 1.0,
+      "max-fusion": 0.9722222222222222,
+      "n_test_fraud": 36
+    },
+    "atm_spree": {
+      "rules": 1.0,
+      "isolation forest": 1.0,
+      "gradient boosting": 1.0,
+      "blend": 1.0,
+      "max-fusion": 1.0,
+      "n_test_fraud": 31
+    },
+    "card_testing": {
+      "rules": 0.34285714285714286,
+      "isolation forest": 0.7142857142857143,
+      "gradient boosting": 0.08571428571428572,
+      "blend": 0.34285714285714286,
+      "max-fusion": 0.7142857142857143,
+      "n_test_fraud": 35
+    },
+    "impossible_travel": {
+      "rules": 0.5,
+      "isolation forest": 1.0,
+      "gradient boosting": 0.9166666666666666,
+      "blend": 1.0,
+      "max-fusion": 1.0,
+      "n_test_fraud": 12
+    }
+  },
+  "top_features": [
+    {
+      "feature": "dist_prev_km",
+      "importance": 0.06301472100169421
+    },
+    {
+      "feature": "log_amount",
+      "importance": 0.040479727762399796
+    },
+    {
+      "feature": "secs_since_prev",
+      "importance": 0.021371947693548703
+    },
+    {
+      "feature": "amt_ratio",
+      "importance": 0.013342191121754462
+    },
+    {
+      "feature": "new_merchant",
+      "importance": 0.00305139136071871
+    },
+    {
+      "feature": "is_online",
+      "importance": 0.002533081509625649
+    },
+    {
+      "feature": "is_night",
+      "importance": 0.0013562505354210996
+    },
+    {
+      "feature": "dist_home_km",
+      "importance": 0.0006141383856239635
+    }
+  ]
+}
